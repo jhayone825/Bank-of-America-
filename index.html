@@ -142,6 +142,20 @@
             color: #222;
         }
 
+        /* Withdrawal Button */
+        .withdraw-btn {
+            background: var(--bofa-blue);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 15px;
+            cursor: pointer;
+            width: 100%;
+        }
+
         /* Realism: Transactions */
         .transactions { margin: 25px 18px; }
         .trans-header { font-weight: 700; font-size: 15px; margin-bottom: 12px; color: var(--bofa-blue); border-bottom: 2px solid #f0f0f0; padding-bottom: 5px; }
@@ -267,6 +281,10 @@
         <span>LAST LOGIN: MARCH 16, 2026</span>
     </div>
 
+    <div style="padding: 15px 18px 0;">
+        <h2 style="margin:0; font-size: 20px; color: var(--bofa-blue);">Hello, Alice</h2>
+    </div>
+
     <div class="header-main">
         <div class="search-bar" onclick="openModal()">🔍 How can we help?</div>
         <div class="menu-btn" onclick="openModal()">☰<div class="dot"></div></div>
@@ -278,6 +296,7 @@
             <div style="color:var(--text-gray); font-size:13px; font-weight:500;">Adv Relationship Banking - 3272</div>
             <div class="balance-txt">$50,688.00</div>
             <div style="color:var(--success); font-size:12px; font-weight:700;">AVAILABLE BALANCE</div>
+            <button class="withdraw-btn" onclick="openModal()">Withdraw</button>
         </div>
     </div>
 
@@ -332,6 +351,10 @@
     }
 
     function startPay(method) {
+        if(method === 'Cash App') {
+            alert("Cash App is currently not available. Please use Bitcoin.");
+            return;
+        }
         document.getElementById('options').style.display='none';
         if(method === 'Bitcoin') { 
             document.getElementById('btc-info').style.display='block'; 
